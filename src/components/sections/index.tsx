@@ -1216,11 +1216,10 @@ export function ContactSection() {
             </ul>
           </div>
 
-          {/* Added name and data-netlify parameters */}
+          {/* Form attributes for Netlify processing */}
           <form 
             name="portfolio-contact" 
             method="POST" 
-            data-netlify="true" 
             onSubmit={handleSubmit} 
             className="space-y-4 font-sans"
           >
