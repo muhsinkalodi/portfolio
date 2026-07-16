@@ -43,6 +43,3 @@ next-env.d.ts
 # Custom Exclusions (Requested by User)
 AGENTS.md
 CLAUDE.md
-eslint.config.mjs
-next.config.ts
-postcss.config.mjs

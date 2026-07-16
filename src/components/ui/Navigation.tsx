@@ -132,11 +132,10 @@ export default function Navigation() {
           {/* CTAs */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="/Muhsin_Kalodi_Resume.pdf"
-              download="Muhsin_Kalodi_Resume.pdf"
+              href="mailto:muhsinkalodi9311@gmail.com?subject=Requesting%20Resume%20-%20Portfolio"
               className="text-xs font-semibold px-4 py-2 rounded-full bg-gradient-to-r from-brand-purple to-brand-cyan hover:opacity-90 text-white transition-all flex items-center gap-1.5"
             >
-              Resume <Download size={13} />
+              Request Resume <Download size={13} />
             </a>
             <a
               href="#contact"

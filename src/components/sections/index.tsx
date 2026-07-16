@@ -231,11 +231,10 @@ export function HeroSection({ onScrollTo }: { onScrollTo: (id: string) => void }
             Explore My Journey
           </button>
           <a
-            href="/Muhsin_Kalodi_Resume.pdf"
-            download="Muhsin_Kalodi_Resume.pdf"
+            href="mailto:muhsinkalodi9311@gmail.com?subject=Requesting%20Resume%20-%20Portfolio"
             className="px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-[#00f2fe]/40 text-sm font-semibold text-white transition-all font-sans cursor-none flex items-center gap-2"
           >
-            <Download size={16} /> Download Resume
+            <Download size={16} /> Request Resume
           </a>
           <button
             onClick={() => onScrollTo("projects")}
@@ -1194,12 +1193,11 @@ export function ContactSection() {
 
             <div className="flex flex-wrap gap-2.5">
               <a
-                href="/Muhsin_Kalodi_Resume.pdf"
-                download="Muhsin_Kalodi_Resume.pdf"
+                href="mailto:muhsinkalodi9311@gmail.com?subject=Requesting%20Resume%20-%20Portfolio"
                 className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-brand-cyan/20 bg-brand-cyan/5 hover:bg-brand-cyan/10 hover:border-[#00f2fe]/60 hover:text-white transition-all text-slate-200 text-xs font-sans cursor-none"
               >
                 <Download size={14} className="text-[#00f2fe]" />
-                <span>Download Resume</span>
+                <span>Request Resume</span>
               </a>
               <a
                 href="https://github.com/muhsinkalodi"
