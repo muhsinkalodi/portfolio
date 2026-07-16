@@ -1,4 +1,3 @@
-T
 # Muhsin Kalodi | M.Tech Student & AI Systems Engineer
 
 Welcome to my portfolio! I am an M.Tech student specializing in **Artificial Intelligence & Data Science (AI & DS)** at Pondicherry University, a full-stack web developer, and a machine learning practitioner. I focus on building responsive web platforms, implementing scalable data engineering pipelines, and developing intelligent workflows that bridge the gap between advanced research and practical software solutions.
@@ -35,8 +34,8 @@ Welcome to my portfolio! I am an M.Tech student specializing in **Artificial Int
 ---
 
 ## 📬 Let's Connect!
-* **GitHub:** [github.com/muhsinkalodi](https://github.com) *(Update with your link)*
-* **LinkedIn:** [linkedin.com/in/muhsinkalodi](https://linkedin.com) *(Update with your link)*
+* **GitHub:** [github.com/muhsinkalodi]
+* **LinkedIn:** [linkedin.com/in/muhsinkalodi]
 
 ---
 *Built with passion, deployed via GitHub & Netlify.*
