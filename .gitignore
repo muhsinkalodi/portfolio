@@ -32,6 +32,10 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # vercel
 .vercel
@@ -40,6 +44,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Custom Exclusions (Requested by User)
+# Custom Exclusions (AI Agent config files)
 AGENTS.md
 CLAUDE.md
+# DO NOT ignore next.config.ts, postcss.config.mjs, eslint.config.mjs, package.json, package-lock.json, or tsconfig.json! 
+# They are required for Netlify to build the site successfully.
