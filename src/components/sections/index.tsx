@@ -1136,17 +1136,39 @@ export function SocialHubSection() {
 // ==========================================
 // 15. CONTACT SECTION
 // ==========================================
+
 export function ContactSection() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
+  // Helper function to format data for Netlify's handler
+  const encode = (data: { [key: string]: string }) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    setTimeout(() => {
-      setStatus("success");
-      setFormState({ name: "", email: "", message: "" });
-    }, 1500);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ 
+        "form-name": "portfolio-contact", 
+        ...formState 
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setStatus("success");
+          setFormState({ name: "", email: "", message: "" });
+        } else {
+          setStatus("error");
+        }
+      })
+      .catch(() => setStatus("error"));
   };
 
   return (
@@ -1192,45 +1214,26 @@ export function ContactSection() {
                 <span>muhsinkalodi9311@gmail.com</span>
               </li>
             </ul>
-
-            <div className="flex flex-wrap gap-2.5">
-              <a
-                href={process.env.NEXT_PUBLIC_RESUME_URL || "mailto:muhsinkalodi9311@gmail.com?subject=Requesting%20Resume%20-%20Portfolio"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-brand-cyan/20 bg-brand-cyan/5 hover:bg-brand-cyan/10 hover:border-[#00f2fe]/60 hover:text-white transition-all text-slate-200 text-xs font-sans cursor-none"
-              >
-                <Download size={14} className="text-[#00f2fe]" />
-                <span>Download Resume</span>
-              </a>
-              <a
-                href="https://github.com/muhsinkalodi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-white/5 bg-white/2 hover:border-[#00f2fe]/40 hover:text-white transition-all text-slate-300 text-xs font-sans cursor-none"
-              >
-                <GithubIcon size={16} />
-                <span>GitHub</span>
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-white/5 bg-white/2 hover:border-[#00f2fe]/40 hover:text-white transition-all text-slate-300 text-xs font-sans cursor-none"
-              >
-                <LinkedinIcon size={16} />
-                <span>LinkedIn</span>
-              </a>
-            </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4 font-sans">
+          {/* Added name and data-netlify parameters */}
+          <form 
+            name="portfolio-contact" 
+            method="POST" 
+            data-netlify="true" 
+            onSubmit={handleSubmit} 
+            className="space-y-4 font-sans"
+          >
+            {/* Essential hidden token field for NextJS SSR routing */}
+            <input type="hidden" name="form-name" value="portfolio-contact" />
+
             <div>
               <label htmlFor="form-name" className="block text-xs font-medium text-slate-400 mb-1.5">
                 Name
               </label>
               <input
                 id="form-name"
+                name="name" // Added explicit name property
                 type="text"
                 required
                 value={formState.name}
@@ -1246,6 +1249,7 @@ export function ContactSection() {
               </label>
               <input
                 id="form-email"
+                name="email" // Added explicit name property
                 type="email"
                 required
                 value={formState.email}
@@ -1261,6 +1265,7 @@ export function ContactSection() {
               </label>
               <textarea
                 id="form-message"
+                name="message" // Added explicit name property
                 rows={4}
                 required
                 value={formState.message}
@@ -1279,6 +1284,8 @@ export function ContactSection() {
                 "Encrypting Signal..."
               ) : status === "success" ? (
                 "Transmission Dispatched!"
+              ) : status === "error" ? (
+                "Transmission Failed. Retry."
               ) : (
                 <>
                   Transmit Signals <Send size={12} />
